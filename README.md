@@ -39,3 +39,7 @@ snakemake -s <somatic_variant.smk OR germline_variant.smk> \
   --rerun-incomplete \
   --keep-going \
   --latency-wait <#>
+
+## Example
+```bash
+snakemake -s somatic_variant.smk --cores 6 --configfile somatic_variant_config.yaml --rerun-incomplete --keep-going --latency-wait 20
