@@ -30,7 +30,7 @@ This repository provides **modular Snakemake pipelines** for:
 The pipeline is controlled using a YAML configuration file  
 (e.g. `somatic_variant_config.yaml` or `germline_variant_config.yaml`).
 
-### 📌 Example Configuration
+###  Example Configuration
 
 ```yaml
 fq_dir: "/path/to/raw_fastq"
@@ -53,7 +53,7 @@ threads:
 
 ---
 
-### 🧾 Parameter Description
+###  Parameter Description
 
 | Parameter | Description |
 |----------|------------|
@@ -72,7 +72,7 @@ threads:
 
 ---
 
-### 📄 Sample File Format
+###  Sample File Format
 
 The `sample_file` should contain one sample per line:
 
@@ -136,5 +136,19 @@ snakemake -s somatic_variant.smk \
 Pre-built **Panel of Normals (PoN)** and **germline resource files** are available from GATK Best Practices:
 
 👉 https://console.cloud.google.com/storage/browser/gatk-best-practices/somatic-hg38
+
+---
+
+###  Custom Germline Resource (gnomAD v4.1): Can Be Prepared from an Updated Large Number of Samples gnomAD Dataset (730,947 WES and 76,215 WGS)
+
+A targeted panel germline VCF resource was generated from the latest **gnomAD v4.1** dataset using the scripts `query_gnomAD.sh` and `joint_flatten_gnomad.sh` (included in this repository).  
+
+This workflow was implemented through a compiled bash script:
+
+```bash
+gnomad_tGP.sh
+```
+
+which automates querying, processing, and converting gnomAD data into a Mutect2-compatible germline resource VCF (included in this repository).
 
 ---
