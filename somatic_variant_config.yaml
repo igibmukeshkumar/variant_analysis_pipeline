@@ -1,0 +1,17 @@
+fq_dir: "/mnt/nas_share/data_sb/aml_all_data/raw_fq/n50"
+outdir: "/mnt/nas_share/data_sb/aml_all_data/run_analysis/batch2-3-4/test"
+
+sample_file: "/mnt/nas_share/data_sb/aml_all_data/run_analysis/batch2-3-4/del.txt"
+
+ref_genome: "/mnt/nas_share/data_sb/tools/ref_files/hg38_genome/ucsc_dragmap_hg38/"
+mut_ref: "/mnt/nas_share/data_sb/tools/ref_files/hg38_genome/ucsc_hg38/hg38.fa"
+germline: "/mnt/nas_share/data_sb/tools/mutect2_ref/af_gnomad41_tGP.vcf.gz"
+pon: "/mnt/nas_share/data_sb/tools/mutect2_ref/1000g_pon.hg38.vcf.gz"
+
+threads:
+  fastqc: 4
+  trim: 4
+  dragmap: 4
+  samthreads: 2
+  gatk: 4
+
