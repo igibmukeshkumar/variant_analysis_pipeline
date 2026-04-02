@@ -1,7 +1,7 @@
 # Variant Analysis Pipeline
 A modular Snakemake workflow implementing GATK best practices for germline and somatic variant calling, featuring HaplotypeCaller, Mutect2, FastQC, Trim Galore, DRAGEN alignment, and Picard MarkDuplicates.
 
-# 🧬 Reproducible Variant Calling Pipelines (Snakemake)
+#  Reproducible Variant Calling Pipelines (Snakemake)
 
 This repository provides **modular Snakemake pipelines** for:
 
@@ -29,17 +29,30 @@ This repository provides **modular Snakemake pipelines** for:
 ```bash
 conda create -n variant_env --file requirement.txt
 conda activate variant_env
+```
 
-## Running the Pipeline
+---
+
+##  Running the Pipeline
 
 ```bash
 snakemake -s <somatic_variant.smk OR germline_variant.smk> \
   --cores 6 \
-  --configfile <somatic_config.yaml OR germline_config.yaml> \
+  --configfile <somatic_variant_config.yaml OR germline_variant_config.yaml> \
   --rerun-incomplete \
   --keep-going \
   --latency-wait <#>
+```
 
-## Example
+---
+
+##   Example
+
 ```bash
-snakemake -s somatic_variant.smk --cores 6 --configfile somatic_variant_config.yaml --rerun-incomplete --keep-going --latency-wait 20
+snakemake -s somatic_variant.smk \
+  --cores 6 \
+  --configfile somatic_variant_config.yaml \
+  --rerun-incomplete \
+  --keep-going \
+  --latency-wait 20
+```
