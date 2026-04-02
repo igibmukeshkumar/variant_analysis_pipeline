@@ -33,4 +33,9 @@ conda activate variant_env
 ## ▶️ Running the Pipeline
 
 ```bash
-snakemake --cores 6 --configfile <config.yaml> --rerun-incomplete --keep-going --latency-wait 20
+snakemake -s <somatic_variant.smk OR germline_variant.smk> \
+  --cores 6 \
+  --configfile <somatic_config.yaml OR germline_config.yaml> \
+  --rerun-incomplete \
+  --keep-going \
+  --latency-wait <#>
