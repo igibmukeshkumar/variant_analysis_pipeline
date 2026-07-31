@@ -1,0 +1,42 @@
+# ============================================================
+# config.yaml — FLT3-ITD / AML alignment pipeline
+# ============================================================
+
+# One sample name per line, matching {sample}_R1.fastq.gz / {sample}_R2.fastq.gz
+samples_file: "/home/mukesh.kumar/space2/aml_all_data/aml_analysis/DNA/somatic_var/samplesheet.txt"
+
+# ----------------- Paths -----------------
+fq_data: "/home/data/jlab/aml_all_data/medgenome_data/DNA/fq_dna_b3-8"
+result:  "/home/mukesh.kumar/space2/aml_all_data/aml_analysis/DNA/somatic_var/result"
+
+ref_genome: "/home/data/tools/ref_files/hg38_genome/ucsc_dragmap_hg38/"
+mut_ref:    "/home/data/tools/ref_files/hg38_genome/ucsc_hg38/hg38.fa"
+ref_germ:   "/home/data/tool/mutect2_ref/af_gnomad41_tGP.vcf.gz"
+PoN:        "/home/data/tools/mutect2_ref/1000g_pon.hg38.vcf.gz"
+
+# NOTE: conda/env activation is intentionally not handled here —
+# activate your environment yourself before running snakemake.
+
+# ----------------- Trim Galore params -----------------
+trim_galore:
+  quality: 20
+  length: 20
+  stringency: 1
+  phred: 33
+
+# ----------------- Threads per rule -----------------
+# Tuned for a 16-core machine, allowing 2 concurrent align jobs.
+# Run snakemake with `-c 16`.
+# align+sort together = 8, so 2 such jobs fit in 16 cores at once.
+threads:
+  fastqc: 4
+  trim_galore: 4
+  align: 6           # dragen-os threads
+  sort: 2            # samtools sort threads
+  markdup: 2
+  index: 2
+  qc: 4              # fastqc/qualimap/flagstat/stats on bam
+
+# ----------------- Memory -----------------
+mem:
+  sort_per_thread: "2G"
